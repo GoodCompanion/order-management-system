@@ -3,11 +3,11 @@
 Postman
     ↓
 (HTTP + JSON)
-(Postman отправляет запрос:
+Postman отправляет запрос:
 Метод: GET/POST/PUT/DELETE
 URL: http://localhost:8080/api/customers
 Тело: JSON с данными
-Цель: Отправить команду и данные в приложение)
+Цель: Отправить команду и данные в приложение
     ↓
 Controller ("Приемная")
 Controller принимает запрос:
