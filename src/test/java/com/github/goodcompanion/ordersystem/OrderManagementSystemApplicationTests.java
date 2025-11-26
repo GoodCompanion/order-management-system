@@ -1,4 +1,4 @@
-package com.github.vladimirkalinin.order_management_system;
+package com.github.goodcompanion.ordersystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
