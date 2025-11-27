@@ -84,12 +84,12 @@ public class Product {
             return this;
         }
 
-        public ProductBuilder stockQuantity(Long stockQuantity) {
+        public ProductBuilder stockQuantity(long stockQuantity) {
             this.stockQuantity = stockQuantity;
             return this;
         }
 
-        public ProductBuilder isActive(Boolean isActive) {
+        public ProductBuilder isActive(boolean isActive) {
             this.isActive = isActive;
             return this;
         }
