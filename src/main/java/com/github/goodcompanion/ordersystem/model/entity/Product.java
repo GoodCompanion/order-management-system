@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 public class Product {
     @Id
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "id", nullable = false, length = 100)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "sku", unique = true, nullable = false, length = 50)
