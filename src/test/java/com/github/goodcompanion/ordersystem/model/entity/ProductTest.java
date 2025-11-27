@@ -1,11 +1,14 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
+import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {
+    @Test
     void testProductBuilder() {
         String sku = "2352362345";
         String name = "Видеокарта MSI RTX 5060 GAMING OC 8GB";
