@@ -1,9 +1,6 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,9 +17,6 @@ import java.time.LocalDateTime;
  * @Column - "настройки для колонки"
  */
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "customers")
 public class Customer {
     @Id
@@ -41,6 +35,9 @@ public class Customer {
     private BigDecimal balance;
     @Column(name = "purchase_count")
     private Long purchaseCount;
+
+    public Customer() {
+    }
 
     public Customer(String name, String email, String phoneNumber, LocalDateTime registrationDate, BigDecimal balance, Long purchaseCount) {
         this.name = name;
@@ -99,6 +96,62 @@ public class Customer {
             }
             return new Customer(name, email, phoneNumber, registrationDate, balance, purchaseCount);
         }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public Long getPurchaseCount() {
+        return purchaseCount;
+    }
+
+    public void setPurchaseCount(Long purchaseCount) {
+        this.purchaseCount = purchaseCount;
     }
 }
 
