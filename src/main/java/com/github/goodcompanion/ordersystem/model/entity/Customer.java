@@ -23,21 +23,23 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @Column
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
-    @Column
+    @Column(name = "email", length = 100)
     private String email;
-    @Column
+    @Column(name = "phone_number", length = 20)
     private String phoneNumber;
-    @Column
+    @Column(name = "registration_date")
     private LocalDateTime registrationDate;
-    @Column
+    @Column(name = "balance", precision = 10, scale = 2)
     private BigDecimal balance;
-    @Column
+    @Column(name = "purchase_count")
     private Long purchaseCount;
 
     public Customer(String name, String email, String phoneNumber, LocalDateTime registrationDate, BigDecimal balance, Long purchaseCount) {
@@ -49,11 +51,11 @@ public class Customer {
         this.purchaseCount = purchaseCount;
     }
 
-    public static CustomerBuilder builder(){
+    public static CustomerBuilder builder() {
         return new CustomerBuilder();
     }
 
-    public static class CustomerBuilder{
+    public static class CustomerBuilder {
         private String name;
         private String email;
         private String phoneNumber;
@@ -61,38 +63,38 @@ public class Customer {
         private BigDecimal balance = BigDecimal.ZERO;
         private Long purchaseCount = 0L;
 
-        public CustomerBuilder name(String name){
+        public CustomerBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public CustomerBuilder email(String email){
+        public CustomerBuilder email(String email) {
             this.email = email;
             return this;
         }
 
-        public CustomerBuilder phoneNumber(String phoneNumber){
+        public CustomerBuilder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
 
-        public CustomerBuilder registrationDate(LocalDateTime registrationDate){
+        public CustomerBuilder registrationDate(LocalDateTime registrationDate) {
             this.registrationDate = registrationDate;
             return this;
         }
 
-        public CustomerBuilder balance(BigDecimal balance){
+        public CustomerBuilder balance(BigDecimal balance) {
             this.balance = balance;
             return this;
         }
 
-        public CustomerBuilder purchaseCount(Long purchaseCount){
+        public CustomerBuilder purchaseCount(Long purchaseCount) {
             this.purchaseCount = purchaseCount;
             return this;
         }
 
-        public Customer build(){
-            if (name == null){
+        public Customer build() {
+            if (name == null) {
                 throw new IllegalArgumentException("Name обязательное");
             }
             return new Customer(name, email, phoneNumber, registrationDate, balance, purchaseCount);

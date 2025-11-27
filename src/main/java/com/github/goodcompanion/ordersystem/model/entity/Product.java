@@ -12,26 +12,27 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "products")
 public class Product {
     @Id
-    @Column
+    @Column(name = "name", nullable = false, length = 100)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column(name = "sku", unique = true, nullable = false, length = 50)
     private String sku;
-    @Column
+    @Column(name = "name", nullable = false, length = 200)
     private String name;
-    @Column
+    @Column(name = "description", length = 1000)
     private String description;
-    @Column
+    @Column(name = "category", nullable = false, length = 100)
     private String category;
-    @Column
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-    @Column
+    @Column(name = "stock_quantity")
     private Long stockQuantity;
-    @Column
+    @Column(name = "is_active")
     private Boolean isActive;
-    @Column
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     public Product(String name, String sku, String description, String category, BigDecimal price, Long stockQuantity, boolean isActive, LocalDateTime createdAt) {
