@@ -1,8 +1,8 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -19,39 +19,25 @@ import java.time.LocalDateTime;
  * @Column - "настройки для колонки"
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Customer {
-    @Getter
-    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Getter
-    @Setter
     @Column
     private String name;
-    @Getter
-    @Setter
     @Column
     private String email;
-    @Getter
-    @Setter
     @Column
     private String phoneNumber;
-    @Getter
-    @Setter
     @Column
     private LocalDateTime registrationDate;
-    @Getter
-    @Setter
-    @Column (columnDefinition = "0.0")
+    @Column
     private BigDecimal balance;
-    @Getter
-    @Setter
-    @Column (columnDefinition = "0")
+    @Column
     private Long purchaseCount;
-
-    public Customer() {
-    }
 
     public Customer(String name, String email, String phoneNumber, LocalDateTime registrationDate, BigDecimal balance, Long purchaseCount) {
         this.name = name;
@@ -62,13 +48,17 @@ public class Customer {
         this.purchaseCount = purchaseCount;
     }
 
+    public static CustomerBuilder builder(){
+        return new CustomerBuilder();
+    }
+
     public static class CustomerBuilder{
         private String name;
         private String email;
         private String phoneNumber;
-        private LocalDateTime registrationDate;
-        private BigDecimal balance;
-        private Long purchaseCount;
+        private LocalDateTime registrationDate = LocalDateTime.now();
+        private BigDecimal balance = BigDecimal.ZERO;
+        private Long purchaseCount = 0L;
 
         public CustomerBuilder name(String name){
             this.name = name;
