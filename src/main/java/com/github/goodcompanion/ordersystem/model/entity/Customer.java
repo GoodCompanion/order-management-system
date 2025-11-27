@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 /**
  * Класс, который отображается на таблицу в базе данных
+ * Это как паспорт клиента
  * Каждый объект это одна строка в таблице
  * Использует JPA аннотации для настройки
  *
@@ -92,7 +93,7 @@ public class Customer {
 
         public Customer build(){
             if (name == null){
-                throw new IllegalArgumentException("Name is required");
+                throw new IllegalArgumentException("Name обязательное");
             }
             return new Customer(name, email, phoneNumber, registrationDate, balance, purchaseCount);
         }
