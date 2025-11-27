@@ -18,7 +18,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    private String article;
+    private String sku;
     @Column
     private String name;
     @Column
@@ -28,15 +28,15 @@ public class Product {
     @Column
     private BigDecimal price;
     @Column
-    private long stockQuantity;
+    private Long stockQuantity;
     @Column
-    private boolean isActive;
+    private Boolean isActive;
     @Column
     private LocalDateTime createdAt;
 
-    public Product(String name, String article, String description, String category, BigDecimal price, long stockQuantity, boolean isActive, LocalDateTime createdAt) {
+    public Product(String name, String sku, String description, String category, BigDecimal price, Long stockQuantity, boolean isActive, LocalDateTime createdAt) {
         this.name = name;
-        this.article = article;
+        this.sku = sku;
         this.description = description;
         this.category = category;
         this.price = price;
@@ -51,12 +51,12 @@ public class Product {
 
     public static class ProductBuilder {
         private String name;
-        private String article;
+        private String sku;
         private String description;
         private String category;
         private BigDecimal price;
-        private long stockQuantity = 0L;
-        private boolean isActive = true;
+        private Long stockQuantity = 0L;
+        private Boolean isActive = true;
         private LocalDateTime createdAt = LocalDateTime.now();
 
         public ProductBuilder name(String name) {
@@ -64,8 +64,8 @@ public class Product {
             return this;
         }
 
-        public ProductBuilder article(String article) {
-            this.article = article;
+        public ProductBuilder sku(String sku) {
+            this.sku = sku;
             return this;
         }
 
@@ -84,12 +84,12 @@ public class Product {
             return this;
         }
 
-        public ProductBuilder stockQuantity(long stockQuantity) {
+        public ProductBuilder stockQuantity(Long stockQuantity) {
             this.stockQuantity = stockQuantity;
             return this;
         }
 
-        public ProductBuilder isActive(boolean isActive) {
+        public ProductBuilder isActive(Boolean isActive) {
             this.isActive = isActive;
             return this;
         }
@@ -100,10 +100,16 @@ public class Product {
         }
 
         public Product build() {
-            if (name == null || price == null || article == null) {
-                throw new IllegalArgumentException("productName обязательное");
+            if (name == null) {
+                throw new IllegalArgumentException("name обязательное");
+            } else if (sku == null) {
+                throw new IllegalArgumentException("sku обязательное");
+            } else if (category == null) {
+                throw new IllegalArgumentException("category обязательное");
+            } else if (price == null) {
+                throw new IllegalArgumentException("price обязательно");
             }
-            return new Product(name, article, description, category, price, stockQuantity, isActive, createdAt);
+            return new Product(name, sku, description, category, price, stockQuantity, isActive, createdAt);
         }
     }
 }
