@@ -1,9 +1,6 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,17 +13,18 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class Product {
+    @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String productArticle;
+    private String article;
     @Column
-    private String productName;
+    private String name;
     @Column
-    private String productDescription;
+    private String description;
     @Column
-    private String productCategory;
+    private String category;
     @Column
     private BigDecimal productPrice;
     @Column
@@ -36,13 +34,13 @@ public class Product {
     @Column
     private LocalDateTime createAt;
 
-    public Product(String productArticle, String productName, String productDescription, String productCategory, BigDecimal productPrice, Long productQuantity, Boolean isActive, LocalDateTime createAt) {
-        this.productArticle = productArticle;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productCategory = productCategory;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
+    public Product(String article, String name, String description, String category, BigDecimal price, Long stockQuantity, Boolean isActive, LocalDateTime createAt) {
+        this.article = article;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.productPrice = price;
+        this.productQuantity = stockQuantity;
         this.isActive = isActive;
         this.createAt = createAt;
     }
@@ -52,42 +50,42 @@ public class Product {
     }
 
     public static class ProductBuilder {
-        private String productName;
-        private String productArticle;
-        private String productDescription;
-        private String productCategory;
-        private BigDecimal productPrice;
-        private Long productQuantity = 0L;
+        private String name;
+        private String article;
+        private String description;
+        private String category;
+        private BigDecimal price;
+        private Long stockQuantity = 0L;
         private Boolean isActive = false;
         private LocalDateTime createAt = LocalDateTime.now();
 
-        public ProductBuilder productName(String productName) {
-            this.productName = productName;
+        public ProductBuilder productName(String name) {
+            this.name = name;
             return this;
         }
 
-        public ProductBuilder productArticle(String productArticle) {
-            this.productArticle = productArticle;
+        public ProductBuilder productArticle(String article) {
+            this.article = article;
             return this;
         }
 
-        public ProductBuilder productDescription(String productDescription) {
-            this.productDescription = productDescription;
+        public ProductBuilder productDescription(String description) {
+            this.description = description;
             return this;
         }
 
-        public ProductBuilder productCategory(String productCategory) {
-            this.productCategory = productCategory;
+        public ProductBuilder productCategory(String category) {
+            this.category = category;
             return this;
         }
 
-        public ProductBuilder productPrice(BigDecimal productPrice) {
-            this.productPrice = productPrice;
+        public ProductBuilder productPrice(BigDecimal price) {
+            this.price = price;
             return this;
         }
 
-        public ProductBuilder productQuantity(Long productQuantity) {
-            this.productQuantity = productQuantity;
+        public ProductBuilder productQuantity(Long stockQuantity) {
+            this.stockQuantity = stockQuantity;
             return this;
         }
 
@@ -101,10 +99,10 @@ public class Product {
             return this;
         }
         public Product build(){
-            if (productName == null){
+            if (name == null){
                 throw new IllegalArgumentException("productName обязательное");
             }
-            return new Product();
+            return new Product(name, article, description, category, price, stockQuantity, isActive, createAt);
         }
     }
 }
