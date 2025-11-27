@@ -17,7 +17,7 @@ public class Product {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(unique = true)
     private String article;
     @Column
     private String name;
@@ -26,23 +26,23 @@ public class Product {
     @Column
     private String category;
     @Column
-    private BigDecimal productPrice;
+    private BigDecimal price;
     @Column
-    private Long productQuantity;
+    private long stockQuantity;
     @Column
-    private Boolean isActive;
+    private boolean isActive;
     @Column
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
-    public Product(String name, String article, String description, String category, BigDecimal price, Long stockQuantity, Boolean isActive, LocalDateTime createAt) {
+    public Product(String name, String article, String description, String category, BigDecimal price, long stockQuantity, boolean isActive, LocalDateTime createdAt) {
         this.name = name;
         this.article = article;
         this.description = description;
         this.category = category;
-        this.productPrice = price;
-        this.productQuantity = stockQuantity;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
         this.isActive = isActive;
-        this.createAt = createAt;
+        this.createdAt = createdAt;
     }
 
     public static ProductBuilder builder() {
@@ -55,9 +55,9 @@ public class Product {
         private String description;
         private String category;
         private BigDecimal price;
-        private Long stockQuantity = 0L;
-        private Boolean isActive = false;
-        private LocalDateTime createAt = LocalDateTime.now();
+        private long stockQuantity = 0L;
+        private boolean isActive = true;
+        private LocalDateTime createdAt = LocalDateTime.now();
 
         public ProductBuilder name(String name) {
             this.name = name;
@@ -94,15 +94,16 @@ public class Product {
             return this;
         }
 
-        public ProductBuilder createAt(LocalDateTime createAt) {
-            this.createAt = createAt;
+        public ProductBuilder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
             return this;
         }
-        public Product build(){
-            if (name == null){
+
+        public Product build() {
+            if (name == null || price == null || article == null) {
                 throw new IllegalArgumentException("productName обязательное");
             }
-            return new Product(name, article, description, category, price, stockQuantity, isActive, createAt);
+            return new Product(name, article, description, category, price, stockQuantity, isActive, createdAt);
         }
     }
 }
