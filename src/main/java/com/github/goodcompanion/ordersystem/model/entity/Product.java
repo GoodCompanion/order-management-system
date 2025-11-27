@@ -59,32 +59,32 @@ public class Product {
         private Boolean isActive = false;
         private LocalDateTime createAt = LocalDateTime.now();
 
-        public ProductBuilder productName(String name) {
+        public ProductBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public ProductBuilder productArticle(String article) {
+        public ProductBuilder article(String article) {
             this.article = article;
             return this;
         }
 
-        public ProductBuilder productDescription(String description) {
+        public ProductBuilder description(String description) {
             this.description = description;
             return this;
         }
 
-        public ProductBuilder productCategory(String category) {
+        public ProductBuilder category(String category) {
             this.category = category;
             return this;
         }
 
-        public ProductBuilder productPrice(BigDecimal price) {
+        public ProductBuilder price(BigDecimal price) {
             this.price = price;
             return this;
         }
 
-        public ProductBuilder productQuantity(Long stockQuantity) {
+        public ProductBuilder stockQuantity(Long stockQuantity) {
             this.stockQuantity = stockQuantity;
             return this;
         }
