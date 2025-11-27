@@ -34,9 +34,9 @@ public class Product {
     @Column
     private LocalDateTime createAt;
 
-    public Product(String article, String name, String description, String category, BigDecimal price, Long stockQuantity, Boolean isActive, LocalDateTime createAt) {
-        this.article = article;
+    public Product(String name, String article, String description, String category, BigDecimal price, Long stockQuantity, Boolean isActive, LocalDateTime createAt) {
         this.name = name;
+        this.article = article;
         this.description = description;
         this.category = category;
         this.productPrice = price;
