@@ -34,6 +34,10 @@ public class Order {
         this.customer = customer;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,6 +56,10 @@ public class Order {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setId(Long id) {
