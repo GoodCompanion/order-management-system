@@ -1,6 +1,8 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -23,16 +25,24 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @NotBlank(message = "Требуется указать имя покупателя")
     @Column(name = "name", nullable = false, length = 100)
     private String name;
-    @Column(name = "email", length = 100)
+
+    @Email(message = "Адрес электронной почты должен быть действительным")
+    @Column(name = "email",unique = true, length = 100)
     private String email;
+
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
+
     @Column(name = "registration_date")
     private LocalDateTime registrationDate;
+
     @Column(name = "balance", precision = 10, scale = 2)
     private BigDecimal balance;
+
     @Column(name = "purchase_count")
     private Long purchaseCount;
 
