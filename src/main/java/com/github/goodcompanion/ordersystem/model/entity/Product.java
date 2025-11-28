@@ -12,20 +12,28 @@ public class Product {
     @Column(name = "id", nullable = false, length = 100)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "sku", unique = true, nullable = false, length = 50)
     private String sku;
+
     @Column(name = "name", nullable = false, length = 200)
     private String name;
+
     @Column(name = "description", length = 1000)
     private String description;
+
     @Column(name = "category", nullable = false, length = 100)
     private String category;
+
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
+
     @Column(name = "stock_quantity")
     private Long stockQuantity;
+
     @Column(name = "is_active")
     private Boolean isActive;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
