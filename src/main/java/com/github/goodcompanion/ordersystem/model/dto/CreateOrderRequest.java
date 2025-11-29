@@ -1,5 +1,7 @@
 package com.github.goodcompanion.ordersystem.model.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.github.goodcompanion.ordersystem.config.BigDecimalDeserializer;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -12,6 +14,7 @@ public class CreateOrderRequest {
 
     @NotNull(message = "Цена обязательная")
     @Positive(message = "Цена должна быть положительной")
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal price;
 
     @NotNull(message = "ID Клиента обязателен")
