@@ -1,7 +1,11 @@
 package com.github.goodcompanion.ordersystem.controller;
 
+import com.github.goodcompanion.ordersystem.model.dto.CreateOrderRequest;
+import com.github.goodcompanion.ordersystem.model.entity.Customer;
 import com.github.goodcompanion.ordersystem.model.entity.Order;
+import com.github.goodcompanion.ordersystem.repository.CustomerRepository;
 import com.github.goodcompanion.ordersystem.repository.OrderRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,9 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     //получить все заказы
     @GetMapping
@@ -33,6 +40,27 @@ public class OrderController {
     @PostMapping
     public Order createOrder(@RequestBody Order order) {
         return orderRepository.save(order);
+    }
+
+    public ResponseEntity<?> createOrder(@Valid @RequestBody CreateOrderRequest request) {
+        try {
+            Optional<Customer> customerOptional = customerRepository.findById(request.getCustomerId());
+            if (customerOptional.isEmpty()) {
+                return ResponseEntity.badRequest().body("Ошибка: Клиент с ID " + request.getCustomerId() + " не найден");
+            }
+            Customer customer = customerOptional.get();
+
+            Order order = new Order();
+            order.setDescription(request.getDescription());
+            order.setPrice(request.getPrice());
+            order.setCustomer(customer);
+
+            Order savedOrder = orderRepository.save(order);
+
+            return ResponseEntity.ok(savedOrder);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Ошибка при создании заказа: " + e.getMessage());
+        }
     }
 
     //обновить заказ
