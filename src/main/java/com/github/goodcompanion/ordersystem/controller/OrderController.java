@@ -61,7 +61,7 @@ public class OrderController {
 
     //обновить заказ
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(Long id, Order orderDetails) {
+    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order orderDetails) {
         Optional<Order> optionalOrder = orderRepository.findById(id);
         if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
