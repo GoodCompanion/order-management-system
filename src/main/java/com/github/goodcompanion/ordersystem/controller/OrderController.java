@@ -38,10 +38,6 @@ public class OrderController {
 
     //создать новый заказ
     @PostMapping
-    public Order createOrder(@RequestBody Order order) {
-        return orderRepository.save(order);
-    }
-
     public ResponseEntity<?> createOrder(@Valid @RequestBody CreateOrderRequest request) {
         try {
             Optional<Customer> customerOptional = customerRepository.findById(request.getCustomerId());
