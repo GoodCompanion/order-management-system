@@ -1,11 +1,14 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Класс, который отображается на таблицу в базе данных
@@ -46,6 +49,10 @@ public class Customer {
     @Column(name = "purchase_count")
     private Long purchaseCount;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Order> orders = new ArrayList<>();
+
     public Customer() {
     }
 
@@ -61,6 +68,8 @@ public class Customer {
     public static CustomerBuilder builder() {
         return new CustomerBuilder();
     }
+
+
 
     public static class CustomerBuilder {
         private String name;
@@ -162,6 +171,14 @@ public class Customer {
 
     public void setPurchaseCount(Long purchaseCount) {
         this.purchaseCount = purchaseCount;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
 
