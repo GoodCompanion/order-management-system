@@ -34,7 +34,7 @@ public class Customer {
     private String name;
 
     @Email(message = "Адрес электронной почты должен быть действительным")
-    @Column(name = "email",unique = true, length = 100)
+    @Column(name = "email", unique = true, length = 100)
     private String email;
 
     @Column(name = "phone_number", length = 20)
@@ -68,7 +68,6 @@ public class Customer {
     public static CustomerBuilder builder() {
         return new CustomerBuilder();
     }
-
 
 
     public static class CustomerBuilder {
@@ -179,6 +178,11 @@ public class Customer {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+        order.setCustomer(this);
     }
 }
 
