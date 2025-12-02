@@ -49,7 +49,7 @@ public class Customer {
     @Column(name = "purchase_count")
     private Long purchaseCount;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
