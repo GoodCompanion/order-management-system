@@ -1,5 +1,7 @@
 package com.github.goodcompanion.ordersystem.service;
 
+import com.github.goodcompanion.ordersystem.exception.CustomerNotFoundException;
+import com.github.goodcompanion.ordersystem.exception.OrderNotFoundException;
 import com.github.goodcompanion.ordersystem.model.dto.CreateOrderRequest;
 import com.github.goodcompanion.ordersystem.model.entity.Customer;
 import com.github.goodcompanion.ordersystem.model.entity.Order;
@@ -28,8 +30,10 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
+    //создать новый заказ
     public Order createOrder(CreateOrderRequest request) {
-        Customer customer = customerRepository.findById(request.getCustomerId()).orElseThrow(() -> new RuntimeException("Клиент не найден"));
+        Customer customer = customerRepository.findById(request.getCustomerId())
+                .orElseThrow(() -> new CustomerNotFoundException(request.getCustomerId()));
 
         Order order = new Order();
         order.setDescription(request.getDescription());
@@ -39,8 +43,9 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    //обновить заказ
     public Order updateOrder(Long id, Order orderDetails) {
-        Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Заказ с ID " + id + " не найден"));
+        Order order = orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException(id));
 
         order.setDescription(orderDetails.getDescription());
         order.setPrice(orderDetails.getPrice());
