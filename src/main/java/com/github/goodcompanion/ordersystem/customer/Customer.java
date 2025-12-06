@@ -57,6 +57,7 @@ public class Customer {
     public Customer() {
     }
 
+
     public Customer(String name, String email, String phoneNumber, LocalDateTime registrationDate, BigDecimal balance, Long purchaseCount) {
         this.name = name;
         this.email = email;
