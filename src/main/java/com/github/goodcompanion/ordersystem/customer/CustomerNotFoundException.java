@@ -1,4 +1,4 @@
-package com.github.goodcompanion.ordersystem.exception;
+package com.github.goodcompanion.ordersystem.customer;
 
 public class CustomerNotFoundException extends RuntimeException {
     public CustomerNotFoundException(Long customerId) {

@@ -1,12 +1,8 @@
-package com.github.goodcompanion.ordersystem.service;
+package com.github.goodcompanion.ordersystem.order;
 
-import com.github.goodcompanion.ordersystem.exception.CustomerNotFoundException;
-import com.github.goodcompanion.ordersystem.exception.OrderNotFoundException;
-import com.github.goodcompanion.ordersystem.model.dto.CreateOrderRequest;
-import com.github.goodcompanion.ordersystem.model.entity.Customer;
-import com.github.goodcompanion.ordersystem.model.entity.Order;
-import com.github.goodcompanion.ordersystem.repository.CustomerRepository;
-import com.github.goodcompanion.ordersystem.repository.OrderRepository;
+import com.github.goodcompanion.ordersystem.customer.CustomerNotFoundException;
+import com.github.goodcompanion.ordersystem.customer.Customer;
+import com.github.goodcompanion.ordersystem.customer.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

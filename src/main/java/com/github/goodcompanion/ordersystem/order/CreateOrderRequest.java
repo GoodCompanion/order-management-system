@@ -1,7 +1,7 @@
-package com.github.goodcompanion.ordersystem.model.dto;
+package com.github.goodcompanion.ordersystem.order;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.github.goodcompanion.ordersystem.config.BigDecimalDeserializer;
+import com.github.goodcompanion.ordersystem.common.BigDecimalDeserializer;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 

@@ -1,6 +1,7 @@
-package com.github.goodcompanion.ordersystem.model.entity;
+package com.github.goodcompanion.ordersystem.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.goodcompanion.ordersystem.order.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

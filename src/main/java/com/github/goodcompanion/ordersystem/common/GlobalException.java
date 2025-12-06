@@ -1,4 +1,4 @@
-package com.github.goodcompanion.ordersystem.exception;
+package com.github.goodcompanion.ordersystem.common;
 
 public class GlobalException extends RuntimeException {
     public GlobalException(String message) {

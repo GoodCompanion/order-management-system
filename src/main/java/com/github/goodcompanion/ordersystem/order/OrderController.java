@@ -1,8 +1,5 @@
-package com.github.goodcompanion.ordersystem.controller;
+package com.github.goodcompanion.ordersystem.order;
 
-import com.github.goodcompanion.ordersystem.model.dto.CreateOrderRequest;
-import com.github.goodcompanion.ordersystem.model.entity.Order;
-import com.github.goodcompanion.ordersystem.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

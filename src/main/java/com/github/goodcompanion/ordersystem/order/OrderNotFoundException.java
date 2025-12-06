@@ -1,4 +1,4 @@
-package com.github.goodcompanion.ordersystem.exception;
+package com.github.goodcompanion.ordersystem.order;
 
 public class OrderNotFoundException extends RuntimeException {
     public OrderNotFoundException(Long orderId) {

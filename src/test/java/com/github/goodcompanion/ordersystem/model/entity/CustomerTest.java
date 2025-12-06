@@ -1,5 +1,6 @@
 package com.github.goodcompanion.ordersystem.model.entity;
 
+import com.github.goodcompanion.ordersystem.customer.Customer;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

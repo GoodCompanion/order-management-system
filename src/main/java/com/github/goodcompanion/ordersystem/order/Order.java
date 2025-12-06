@@ -1,5 +1,6 @@
-package com.github.goodcompanion.ordersystem.model.entity;
+package com.github.goodcompanion.ordersystem.order;
 
+import com.github.goodcompanion.ordersystem.customer.Customer;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

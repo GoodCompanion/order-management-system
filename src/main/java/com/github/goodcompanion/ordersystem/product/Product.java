@@ -1,4 +1,4 @@
-package com.github.goodcompanion.ordersystem.model.entity;
+package com.github.goodcompanion.ordersystem.product;
 
 import jakarta.persistence.*;
 

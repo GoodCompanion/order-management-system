@@ -1,7 +1,5 @@
-package com.github.goodcompanion.ordersystem.controller;
+package com.github.goodcompanion.ordersystem.customer;
 
-import com.github.goodcompanion.ordersystem.model.entity.Customer;
-import com.github.goodcompanion.ordersystem.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

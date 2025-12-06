@@ -1,6 +1,5 @@
-package com.github.goodcompanion.ordersystem.repository;
+package com.github.goodcompanion.ordersystem.order;
 
-import com.github.goodcompanion.ordersystem.model.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

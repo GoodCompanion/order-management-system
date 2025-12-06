@@ -1,4 +1,4 @@
-package com.github.goodcompanion.ordersystem.config;
+package com.github.goodcompanion.ordersystem.common;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;

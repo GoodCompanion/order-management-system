@@ -1,7 +1,7 @@
-package com.github.goodcompanion.ordersystem.handler;
+package com.github.goodcompanion.ordersystem.common;
 
-import com.github.goodcompanion.ordersystem.exception.CustomerNotFoundException;
-import com.github.goodcompanion.ordersystem.exception.OrderNotFoundException;
+import com.github.goodcompanion.ordersystem.customer.CustomerNotFoundException;
+import com.github.goodcompanion.ordersystem.order.OrderNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
