@@ -30,13 +30,13 @@ public class OrderService {
     public Order createOrder(CreateOrderRequest request) {
         Customer customer = customerRepository.findById(request.getCustomerId())
                 .orElseThrow(() -> new CustomerNotFoundException(request.getCustomerId()));
+        Order newOrder = new Order().builder()
+                .description(request.getDescription())
+                .price(request.getPrice())
+                .customer(customer)
+                .build();
 
-        Order order = new Order();
-        order.setDescription(request.getDescription());
-        order.setPrice(request.getPrice());
-        order.setCustomer(customer);
-
-        return orderRepository.save(order);
+        return orderRepository.save(newOrder);
     }
 
     //обновить заказ
