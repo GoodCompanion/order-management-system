@@ -30,7 +30,12 @@ public class CustomerController {
     //создать нового клиента
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
-        return customerRepository.save(customer);
+        Customer newCustomer = Customer.builder()
+                .name(customer.getName())
+                .email(customer.getEmail())
+                .phoneNumber(customer.getPhoneNumber())
+                .build();
+        return customerRepository.save(newCustomer);
     }
 
     //обновить клиента
