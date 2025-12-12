@@ -25,4 +25,10 @@ public class CustomerService {
     public Optional<Customer> getCustomerById(Long id) {
         return customerRepository.findById(id);
     }
+
+    //создать нового покупателя
+    public Customer createCustomer(CreateCustomerRequest request) {
+        Customer customer = Customer.builder().name(request.getName()).email(request.getEmail()).phoneNumber(request.getPhoneNumber()).build();
+        return customerRepository.save(customer);
+    }
 }
