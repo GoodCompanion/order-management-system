@@ -18,10 +18,12 @@ public class OrderService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    //получить все заказы
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
+    //получить заказ по id
     public Optional<Order> getOrderById(Long id) {
         return orderRepository.findById(id);
     }
@@ -53,6 +55,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    //удалить заказ по id
     public boolean deleteOrder(Long id) {
         if (orderRepository.existsById(id)) {
             orderRepository.deleteById(id);
@@ -61,6 +64,7 @@ public class OrderService {
         return false;
     }
 
+    //получить заказ по status
     public List<Order> gerOrderByStatus(String status) {
         return orderRepository.findByStatus(status);
     }
